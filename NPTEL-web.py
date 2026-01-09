@@ -1,3 +1,5 @@
+import os
+os.environ["ULTRALYTICS_NO_CV2"] = "1"
 import streamlit as st
 import torch
 import numpy as np
@@ -75,13 +77,14 @@ if uploaded_files:
         results = model(
             image_np,
             conf=confidence,
-            device=device,
+            device=cpu,
             half=False,
             verbose=False
         )
 
         # Draw predictions
         annotated_img = results[0].plot()
+        st.image(annotated_img, use_container_width=True)
 
         # Display side-by-side
         col1, col2 = st.columns(2)
@@ -94,6 +97,7 @@ if uploaded_files:
 
 else:
     st.info("👆 Upload images to start detection")
+
 
 
 

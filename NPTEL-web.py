@@ -77,7 +77,7 @@ if uploaded_files:
             image_np,
             conf=confidence,
             device=device,
-            half=True,
+            half=False,
             verbose=False
         )
 
@@ -96,3 +96,4 @@ if uploaded_files:
 
 else:
     st.info("👆 Upload images to start detection")
+

@@ -1,7 +1,6 @@
-import os
-os.environ["ULTRALYTICS_NO_CV2"] = "1"
 import streamlit as st
 import torch
+import cv2
 import numpy as np
 from PIL import Image
 from ultralytics import YOLO
@@ -77,14 +76,14 @@ if uploaded_files:
         results = model(
             image_np,
             conf=confidence,
-            device="cpu",
-            half=False,
+            device=device,
+            half=True,
             verbose=False
         )
 
         # Draw predictions
         annotated_img = results[0].plot()
-        st.image(annotated_img, use_container_width=True)
+        annotated_img = cv2.cvtColor(annotated_img, cv2.COLOR_BGR2RGB)
 
         # Display side-by-side
         col1, col2 = st.columns(2)
@@ -97,8 +96,3 @@ if uploaded_files:
 
 else:
     st.info("👆 Upload images to start detection")
-
-
-
-
-

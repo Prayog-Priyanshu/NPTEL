@@ -77,7 +77,7 @@ if uploaded_files:
         results = model(
             image_np,
             conf=confidence,
-            device=cpu,
+            device="cpu",
             half=False,
             verbose=False
         )
@@ -97,6 +97,7 @@ if uploaded_files:
 
 else:
     st.info("👆 Upload images to start detection")
+
 
 
 

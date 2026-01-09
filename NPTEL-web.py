@@ -81,7 +81,7 @@ if uploaded_files:
         )
 
         # Draw predictions
-        annotated_img = results[0].plot())
+        annotated_img = results[0].plot()
 
         # Display side-by-side
         col1, col2 = st.columns(2)
@@ -94,5 +94,6 @@ if uploaded_files:
 
 else:
     st.info("👆 Upload images to start detection")
+
 
 
